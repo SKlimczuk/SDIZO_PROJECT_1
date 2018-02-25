@@ -11,4 +11,18 @@
 
 #include <stdio.h>
 
+class Array
+{
+public:
+    void addAtBegin();
+    void addAtMiddle();
+    void addAtBottom();
+    
+    void deleteFirst();
+    void deleteMiddle();
+    void deleteLast();
+    
+    void findElement();
+};
+
 #endif /* Array_hpp */

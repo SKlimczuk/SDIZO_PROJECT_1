@@ -7,3 +7,8 @@
 //
 
 #include "Array.hpp"
+
+void Array::addAtBegin()
+{
+    
+}
