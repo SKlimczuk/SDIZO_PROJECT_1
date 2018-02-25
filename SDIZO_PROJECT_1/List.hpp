@@ -10,10 +10,16 @@
 #define List_hpp
 
 #include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 class List
 {
 public:
+    void readFromFile(string filename);
+    void printList();
+    
     void addAtBegin();
     void addAtMiddle();
     void addAtBottom();

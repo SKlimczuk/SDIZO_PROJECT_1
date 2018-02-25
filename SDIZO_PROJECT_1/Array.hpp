@@ -10,10 +10,23 @@
 #define Array_hpp
 
 #include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 class Array
 {
+private:
+    int size;
+    int *head;
 public:
+    Array();
+    Array(int *array, int size);
+    ~Array();
+    
+    bool readFromFile(string filename);
+    void printArray();
+    
     void addAtBegin();
     void addAtMiddle();
     void addAtBottom();
@@ -23,6 +36,11 @@ public:
     void deleteLast();
     
     void findElement();
+    
+    int getSize()
+    {
+        return size;
+    }
 };
 
 #endif /* Array_hpp */

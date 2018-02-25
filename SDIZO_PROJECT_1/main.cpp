@@ -27,17 +27,18 @@ int main(int argc, const char * argv[]) {
     //-----------------------------------------------------------------------------MENU
     do {
         clearScreen();
-        cout<<"*** MENU ***"<<endl;
-        cout<<"1 - wczytaj dane z pliku\n2 - tablica\n3 - lista\n0 - wyjscie\n";
-        cout<<"WYBOR : ";
-        cin>>menu;
+        cout << "*** MENU ***"<<endl;
+        cout << "1 - wczytaj dane z pliku\n2 - tablica\n3 - lista\n0 - wyjscie\n";
+        cout << "WYBOR : ";
+        cin >> menu;
         switch (menu) {
             case 1:
             {
+                //wczytywanie z pliku tekstowego
                 clearScreen();
                 string filename;
-                cout<<"Podaj nazwe pliku: ";
-                cin>>filename;
+                cout << "Podaj nazwe pliku: ";
+                cin >> filename;
                 filename += ".txt";
                 
                 
