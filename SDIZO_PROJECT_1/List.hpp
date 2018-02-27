@@ -14,21 +14,35 @@
 
 using namespace std;
 
+struct listElement
+{
+    int data;
+    listElement *next, *prev;
+};
+
 class List
 {
+private:
+    listElement *tail, *head;
+    int size;
 public:
-    void readFromFile(string filename);
+    List();
+    ~List();
+    
+    bool readFromFile(string filename);
     void printList();
     
-    void addAtBegin();
-    void addAtMiddle();
-    void addAtBottom();
+    void addAtBegin(int val, listElement *&head, listElement *&tail);
+    void addAfterElement(int val, int index, listElement *&head, listElement *&tail);
+    void addAtBottom(int val, listElement *&head, listElement *&tail);
     
     void deleteFirst();
     void deleteMiddle();
     void deleteLast();
     
     void findElement();
+    
+    int getSize();
 };
 
 #endif /* List_hpp */

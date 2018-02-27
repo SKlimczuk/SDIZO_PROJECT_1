@@ -18,7 +18,7 @@ class Array
 {
 private:
     int size;
-    int *head;
+    int *array;
 public:
     Array();
     Array(int *array, int size);
@@ -27,9 +27,9 @@ public:
     bool readFromFile(string filename);
     void printArray();
     
-    void addAtBegin();
-    void addAtMiddle();
-    void addAtBottom();
+    void addAtBegin(int val);
+    void addAtMiddle(int val, int idx);
+    void addAtBottom(int val);
     
     void deleteFirst();
     void deleteMiddle();
