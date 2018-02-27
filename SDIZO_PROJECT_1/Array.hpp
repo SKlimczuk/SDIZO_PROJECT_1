@@ -32,15 +32,12 @@ public:
     void addAtBottom(int val);
     
     void deleteFirst();
-    void deleteMiddle();
+    void deleteMiddle(int idx);
     void deleteLast();
     
-    void findElement();
+    bool findElement(int element);
     
-    int getSize()
-    {
-        return size;
-    }
+    int getSize();
 };
 
 #endif /* Array_hpp */

@@ -115,3 +115,76 @@ void Array::addAtBegin(int val)
     temp_array[0] = val;
     array = temp_array;
 }
+
+void Array::deleteFirst()
+{
+    if(size == 0)
+        cout << endl << "Tablica jest pusta !" << endl;
+    else
+    {
+        size--;
+        int *temp_array = new int [size];
+        
+        for(int i=0;i<size;i++)
+            temp_array[i] = array[i+1];
+        delete []array;
+        
+        array = temp_array;
+    }
+}
+
+void Array::deleteMiddle(int idx)
+{
+    if(size == 0)
+        cout << endl << "Tablica jest pusta !" << endl;
+    else if(idx < 0 && idx >= size)
+        cout << endl << "Nieprawidlowy indeks !" << endl;
+    else
+    {
+        size--;
+        int *temp_array = new int [size];
+        
+        for(int i=0;i<idx;i++)
+            temp_array[i] = array[i];
+        for (int i=idx; i<size; i++)
+            temp_array[i] = array[i+1];
+        delete []array;
+        
+        array = temp_array;
+    }
+}
+
+void Array::deleteLast()
+{
+    if(size == 0)
+        cout << endl << "Tablica jest pusta !" << endl;
+    else
+    {
+        size--;
+        int *temp_array = new int [size];
+        
+        for(int i=0;i<size;i++)
+            temp_array[i] = array[i];
+        delete []array;
+        
+        array = temp_array;
+    }
+}
+
+bool Array::findElement(int element)
+{
+    if(size == 0)
+        cout << endl << "Tablica jest pusta !";
+    else
+    {
+        for(int i=0;i<size;i++)
+            if(array[i] == element)
+                return true;
+    }
+    return false;
+}
+
+int Array::getSize()
+{
+    return size;
+}

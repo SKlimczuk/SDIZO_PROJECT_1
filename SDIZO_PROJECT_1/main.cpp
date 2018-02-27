@@ -23,6 +23,8 @@ void clearScreen();
 int main(int argc, const char * argv[]) {
     bool condition = true;  //zmienna potrzebna do zapetlenia menu
     int menu = NULL;        //zmienna wyboru
+    int arr_el;             //zmienna pomocnicza do przechowywania wartosci wstawianego do tablicy elementu
+    int arr_idx;            //zmienna przechowujaca indeks wstawianego/usuwanego/wyszukiwanego elementu
     
     //pomocniczne szablony
     string temp_menu = "1 - dodaj\n2 - usun\n3 - wyszukaj\nWYBOR : ";
@@ -33,8 +35,8 @@ int main(int argc, const char * argv[]) {
     //-----------------------------------------------------------------------------MENU
     do {
         //clearScreen();
-        cout << "*** MENU ***"<<endl;
-        cout << "1 - wczytaj i wyswietl dane z pliku\n2 - tablica\n3 - lista\n0 - wyjscie\n";
+        cout << endl << "*** MENU ***" << endl;
+        cout << "1 - wczytaj dane z pliku\n2 - wyswietl dane z pliku\n3 - tablica\n4 - lista\n0 - wyjscie\n";
         cout << "WYBOR : ";
         cin >> menu;
         switch (menu) {
@@ -43,14 +45,18 @@ int main(int argc, const char * argv[]) {
                 //wczytywanie z pliku tekstowego
                 clearScreen();
                 string filename;
-                cout << "Podaj nazwe pliku: ";
+                cout << "Podaj nazwe pliku (bez rozszerzenia) : ";
                 cin >> filename;
                 filename += ".txt";
                 
-                array->readFromFile("test.txt");
+                array->readFromFile(filename);
                 array->printArray();
             }break;
             case 2:
+            {
+                array->printArray();
+            }break;
+            case 3:
             {
                 //--------------------TABLICA
                 clearScreen();
@@ -63,8 +69,6 @@ int main(int argc, const char * argv[]) {
                     {
                         //dodawanie - 3 sytuacje
                         clearScreen();
-                        int arr_el;
-                        int arr_idx;
                         cout<<"* DODAWANIE *"<<endl;
                         cout<<temp_menu_deeper;
                         cin>>menu;
@@ -82,7 +86,7 @@ int main(int argc, const char * argv[]) {
                                 //wybrane miejsce
                                 cout << "Podaj wartosc nowego elementu: ";
                                 cin >> arr_el;
-                                cout << "Podaj miejsce wstawienia: ";
+                                cout << "Podaj indeks wstawienia nowego elementu: ";
                                 cin >> arr_idx;
                                 arr_idx--;
                                 array->addAtMiddle(arr_el, arr_idx);
@@ -113,14 +117,23 @@ int main(int argc, const char * argv[]) {
                             case 1:
                             {
                                 //poczatek
+                                array->deleteFirst();
+                                array->printArray();
                             }break;
                             case 2:
                             {
                                 //wybrane miejsce
+                                cout << "Podaj indeks usuwanego elementu: ";
+                                cin >> arr_idx;
+                                arr_idx--;
+                                array->deleteMiddle(arr_idx);
+                                array->printArray();
                             }break;
                             case 3:
                             {
                                 //koniec
+                                array->deleteLast();
+                                array->printArray();
                             }break;
                             default:
                                 menu = NULL;
@@ -133,10 +146,13 @@ int main(int argc, const char * argv[]) {
                         //wyszukiwanie
                         clearScreen();
                         cout<<"* WYSZUKIWANIE *"<<endl;
-                        int elementToFind = NULL;
                         cout<<"Wyszukaj element: ";
-                        cin>>elementToFind;
-                        
+                        cin>>arr_idx;
+                        bool findResult = array->findElement(arr_idx);
+                        if(findResult)
+                            cout << endl << "Tablica zawiera element" << endl;
+                        else
+                            cout << endl << "Tablica nie zawiera elementu" << endl;
                     }break;
                     default:
                         clearScreen();
@@ -144,7 +160,7 @@ int main(int argc, const char * argv[]) {
                         break;
                 }
             }break;
-            case 3:
+            case 4:
             {
                 //--------------------LISTA
                 clearScreen();
