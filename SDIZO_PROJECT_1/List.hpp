@@ -32,15 +32,15 @@ public:
     bool readFromFile(string filename);
     void printList();
     
-    void addAtBegin(int val, listElement *&head, listElement *&tail);
-    void addAfterElement(int val, int index, listElement *&head, listElement *&tail);
-    void addAtBottom(int val, listElement *&head, listElement *&tail);
+    void addAtBegin(int val);
+    void addAfterElement(int val, int idx);
+    void addAtBottom(int val);
     
     void deleteFirst();
     void deleteMiddle();
     void deleteLast();
     
-    void findElement();
+    bool findElement(int val);
     
     int getSize();
 };

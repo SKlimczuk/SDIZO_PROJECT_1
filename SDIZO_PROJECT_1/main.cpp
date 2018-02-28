@@ -23,14 +23,17 @@ void clearScreen();
 int main(int argc, const char * argv[]) {
     bool condition = true;  //zmienna potrzebna do zapetlenia menu
     int menu = NULL;        //zmienna wyboru
-    int arr_el;             //zmienna pomocnicza do przechowywania wartosci wstawianego do tablicy elementu
+    int arr_val;            //zmienna pomocnicza do przechowywania wartosci wstawianego do tablicy elementu
     int arr_idx;            //zmienna przechowujaca indeks wstawianego/usuwanego/wyszukiwanego elementu
+    int list_val;
+    int list_idx;
     
     //pomocniczne szablony
     string temp_menu = "1 - dodaj\n2 - usun\n3 - wyszukaj\nWYBOR : ";
     string temp_menu_deeper = "1 - poczatek\n2 - wybierz meiejsce\n3 - koniec\nWYBOR : ";
     
     Array *array = new Array();
+    List *list = new List();
 
     //-----------------------------------------------------------------------------MENU
     do {
@@ -49,12 +52,17 @@ int main(int argc, const char * argv[]) {
                 cin >> filename;
                 filename += ".txt";
                 
-                array->readFromFile(filename);
-                array->printArray();
+                //array->readFromFile(filename);
+                //array->printArray();
+                list->readFromFile(filename);
+                list->printList();
+                
             }break;
             case 2:
             {
-                array->printArray();
+                //wyswietlanie struktur
+                //array->printArray();
+                list->printList();
             }break;
             case 3:
             {
@@ -77,27 +85,27 @@ int main(int argc, const char * argv[]) {
                             {
                                 //poczatek
                                 cout << "Podaj wartosc nowego elementu: ";
-                                cin >> arr_el;
-                                array->addAtBegin(arr_el);
+                                cin >> arr_val;
+                                array->addAtBegin(arr_val);
                                 array->printArray();
                             }break;
                             case 2:
                             {
                                 //wybrane miejsce
                                 cout << "Podaj wartosc nowego elementu: ";
-                                cin >> arr_el;
+                                cin >> arr_val;
                                 cout << "Podaj indeks wstawienia nowego elementu: ";
                                 cin >> arr_idx;
                                 arr_idx--;
-                                array->addAtMiddle(arr_el, arr_idx);
+                                array->addAtMiddle(arr_val, arr_idx);
                                 array->printArray();
                             }break;
                             case 3:
                             {
                                 //koniec
                                 cout << "Podaj wartosc nowego elementu: ";
-                                cin >> arr_el;
-                                array->addAtBottom(arr_el);
+                                cin >> arr_val;
+                                array->addAtBottom(arr_val);
                                 array->printArray();
                             }break;
                             default:
@@ -180,14 +188,30 @@ int main(int argc, const char * argv[]) {
                             case 1:
                             {
                                 //poczatek
+                                cout << endl << "Poda wartosc elementu: ";
+                                cin >> list_val;
+                                list->addAtBegin(list_val);
+                                list->printList();
                             }break;
                             case 2:
                             {
                                 //wybrane miejsce
+                                cout << endl << "Poda wartosc elementu: ";
+                                cin >> list_val;
+                                cout << endl << "Poda indeks elementu: ";
+                                cin >> list_idx;
+                                list_idx--;
+                                list->addAfterElement(list_val, list_idx);
+                                list->printList();
+
                             }break;
                             case 3:
                             {
                                 //koniec
+                                cout << endl << "Poda wartosc elementu: ";
+                                cin >> list_val;
+                                list->addAtBottom(list_val);
+                                list->printList();
                             }break;
                             default:
                                 menu = NULL;
@@ -206,14 +230,23 @@ int main(int argc, const char * argv[]) {
                             case 1:
                             {
                                 //poczatek
+                                
+                                list->printList();
                             }break;
                             case 2:
                             {
                                 //wybrane miejsce
+                                
+                                list->printList();
                             }break;
                             case 3:
                             {
                                 //koniec
+                                cout << endl << "Poda indeks elementu: ";
+                                cin >> list_idx;
+                                list_idx--;
+                                //metoda
+                                list->printList();
                             }break;
                             default:
                                 break;
@@ -224,11 +257,14 @@ int main(int argc, const char * argv[]) {
                     {
                         //wyszukiwanie
                         clearScreen();
-                        cout<<"* WYSZUKIWANIE *"<<endl;
-                        int elementToFind = NULL;
-                        cout<<"Wyszukaj element: ";
-                        cin>>elementToFind;
-                        //metoda wyszukujaca element
+                        cout << "* WYSZUKIWANIE *" << endl;
+                        cout << "Wyszukaj element: ";
+                        cin >> list_val;
+                        bool findResult = list->findElement(list_val);
+                        if(findResult)
+                            cout << endl << "Lista zawiera element" << endl;
+                        else
+                            cout << endl << "Lista nie zawiera elementu" << endl;
                     }break;
                     default:
                         clearScreen();
