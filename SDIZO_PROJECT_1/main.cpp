@@ -230,22 +230,22 @@ int main(int argc, const char * argv[]) {
                             case 1:
                             {
                                 //poczatek
-                                
+                                list->deleteFirst();
                                 list->printList();
                             }break;
                             case 2:
                             {
                                 //wybrane miejsce
-                                
+                                cout << endl << "Poda indeks elementu: ";
+                                cin >> list_idx;
+                                list_idx--;
+                                list->deleteMiddle(list_idx);
                                 list->printList();
                             }break;
                             case 3:
                             {
                                 //koniec
-                                cout << endl << "Poda indeks elementu: ";
-                                cin >> list_idx;
-                                list_idx--;
-                                //metoda
+                                list->deleteLast();
                                 list->printList();
                             }break;
                             default:

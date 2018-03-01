@@ -37,7 +37,7 @@ public:
     void addAtBottom(int val);
     
     void deleteFirst();
-    void deleteMiddle();
+    void deleteMiddle(int idx);
     void deleteLast();
     
     bool findElement(int val);

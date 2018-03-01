@@ -64,7 +64,7 @@ void List::printList()
     listElement *temp = head;
     
     if(temp == nullptr)
-        cout << endl << "Lista jest puta !" << endl;
+        cout << endl << "Lista jest pusta !" << endl;
     else
     {
         cout << endl << "-----------------" << endl;
@@ -79,7 +79,6 @@ void List::printList()
     }
 }
 
-//void List::addAtBegin(int val, listElement *&head, listElement *&tail)
 void List::addAtBegin(int val)
 {
     listElement *temp = new listElement;
@@ -135,6 +134,78 @@ void List::addAtBottom(int val)
         temp->prev->next = temp;
     else
         head = temp;
+}
+
+void List::deleteFirst()
+{
+    if(!head)
+        cout << endl << "Lista jest pusta !" << endl;
+    else
+    {
+        if(head->next)
+        {
+            size--;
+            head->next->prev=nullptr;
+            head = head->next;
+        }
+        else
+        {
+            size--;
+            head = tail = nullptr;
+        }
+    }
+}
+
+void List::deleteMiddle(int idx)
+{
+    if(!head)
+        cout << endl << "Lista jest pusta !" << endl;
+    else if(idx >= size)
+        cout << endl << "Nieprawidlowy indeks !" << endl;
+    else
+    {
+        listElement *el_to_remove = head;
+        
+        int i = 0;
+        while(i != idx)
+        {
+            el_to_remove = el_to_remove->next;
+            i++;
+        }
+        if(!el_to_remove->prev)
+            deleteFirst();
+        else if(!el_to_remove->next)
+            deleteLast();
+        else
+        {
+            size--;
+            el_to_remove->prev->next = el_to_remove->next;
+            el_to_remove->next->prev = el_to_remove->prev;
+        }
+        delete el_to_remove;
+    }
+}
+
+void List::deleteLast()
+{
+    if(!head)
+    {
+        cout << endl << "Lista jest pusta !" << endl;
+    }
+    else
+    {
+        if(tail->prev)
+        {
+            size--;
+            tail->prev->next = nullptr;
+            tail = tail->prev;
+        }
+        else
+        {
+            size--;
+            head = tail = nullptr;
+        }
+    }
 }
 
 bool List::findElement(int val)
