@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA824D82048654000CC609D /* Heap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA824D62048654000CC609D /* Heap.cpp */; };
 		2FD13BD02041C13200A957A9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD13BCF2041C13200A957A9 /* main.cpp */; };
 		2FD13BD82041C57400A957A9 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD13BD62041C57400A957A9 /* List.cpp */; };
 		2FD13BDB2041C59E00A957A9 /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FD13BD92041C59E00A957A9 /* Array.cpp */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2FA824D62048654000CC609D /* Heap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Heap.cpp; sourceTree = "<group>"; };
+		2FA824D72048654000CC609D /* Heap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Heap.hpp; sourceTree = "<group>"; };
 		2FD13BCC2041C13200A957A9 /* SDIZO_PROJECT_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDIZO_PROJECT_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD13BCF2041C13200A957A9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2FD13BD62041C57400A957A9 /* List.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = List.cpp; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 				2FD13BD72041C57400A957A9 /* List.hpp */,
 				2FD13BD92041C59E00A957A9 /* Array.cpp */,
 				2FD13BDA2041C59E00A957A9 /* Array.hpp */,
+				2FA824D62048654000CC609D /* Heap.cpp */,
+				2FA824D72048654000CC609D /* Heap.hpp */,
 			);
 			path = SDIZO_PROJECT_1;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				2FD13BD02041C13200A957A9 /* main.cpp in Sources */,
 				2FD13BD82041C57400A957A9 /* List.cpp in Sources */,
 				2FD13BDB2041C59E00A957A9 /* Array.cpp in Sources */,
+				2FA824D82048654000CC609D /* Heap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 
 #include "List.hpp"
 #include "Array.hpp"
+#include "Heap.hpp"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ int main(int argc, const char * argv[]) {
     int arr_idx;            //zmienna przechowujaca indeks wstawianego/usuwanego/wyszukiwanego elementu
     int list_val;
     int list_idx;
+    int heap_val;
     
     //pomocniczne szablony
     string temp_menu = "1 - dodaj\n2 - usun\n3 - wyszukaj\nWYBOR : ";
@@ -34,12 +36,13 @@ int main(int argc, const char * argv[]) {
     
     Array *array = new Array();
     List *list = new List();
+    Heap *heap = new Heap();
 
     //-----------------------------------------------------------------------------MENU
     do {
         //clearScreen();
         cout << endl << "*** MENU ***" << endl;
-        cout << "1 - wczytaj dane z pliku\n2 - wyswietl dane z pliku\n3 - tablica\n4 - lista\n0 - wyjscie\n";
+        cout << "1 - wczytaj dane z pliku\n2 - wyswietl dane z pliku\n3 - tablica\n4 - lista\n5 - kopiec binarny\n0 - wyjscie\n";
         cout << "WYBOR : ";
         cin >> menu;
         switch (menu) {
@@ -54,8 +57,10 @@ int main(int argc, const char * argv[]) {
                 
                 //array->readFromFile(filename);
                 //array->printArray();
-                list->readFromFile(filename);
-                list->printList();
+                //list->readFromFile(filename);
+                //list->printList();
+                heap->readFromFile(filename);
+                heap->printHeap("", "", 0);
                 
             }break;
             case 2:
@@ -188,7 +193,7 @@ int main(int argc, const char * argv[]) {
                             case 1:
                             {
                                 //poczatek
-                                cout << endl << "Poda wartosc elementu: ";
+                                cout << endl << "Podaj wartosc elementu: ";
                                 cin >> list_val;
                                 list->addAtBegin(list_val);
                                 list->printList();
@@ -196,9 +201,9 @@ int main(int argc, const char * argv[]) {
                             case 2:
                             {
                                 //wybrane miejsce
-                                cout << endl << "Poda wartosc elementu: ";
+                                cout << endl << "Podaj wartosc elementu: ";
                                 cin >> list_val;
-                                cout << endl << "Poda indeks elementu: ";
+                                cout << endl << "Podaj indeks elementu: ";
                                 cin >> list_idx;
                                 list_idx--;
                                 list->addAfterElement(list_val, list_idx);
@@ -208,7 +213,7 @@ int main(int argc, const char * argv[]) {
                             case 3:
                             {
                                 //koniec
-                                cout << endl << "Poda wartosc elementu: ";
+                                cout << endl << "Podaj wartosc elementu: ";
                                 cin >> list_val;
                                 list->addAtBottom(list_val);
                                 list->printList();
@@ -236,7 +241,7 @@ int main(int argc, const char * argv[]) {
                             case 2:
                             {
                                 //wybrane miejsce
-                                cout << endl << "Poda indeks elementu: ";
+                                cout << endl << "Podaj indeks elementu: ";
                                 cin >> list_idx;
                                 list_idx--;
                                 list->deleteMiddle(list_idx);
@@ -265,6 +270,44 @@ int main(int argc, const char * argv[]) {
                             cout << endl << "Lista zawiera element" << endl;
                         else
                             cout << endl << "Lista nie zawiera elementu" << endl;
+                    }break;
+                    default:
+                        clearScreen();
+                        menu = NULL;
+                        break;
+                }
+            }break;
+            case 5:
+            {
+                //------------------KOPIEC BINARNY
+                cout << endl << temp_menu;
+                cin >> menu;
+                switch (menu) {
+                    case 1:
+                    {
+                        //doodawnia
+                        cout << endl << "Podaj wartosc elementu: ";
+                        cin >> heap_val;
+                        heap->addElement(heap_val);
+                        
+                    }break;
+                    case 2:
+                    {
+                        //usuwanie
+                        //cout << endl << "Podaj wartosc elementu: ";
+                        //cin >> heap_val;
+                        heap->removeElement();
+                    }break;
+                    case 3:
+                    {
+                        //wyszukiwanie
+                        cout << endl << "Podaj wartosc elementu: ";
+                        cin >> heap_val;
+                        bool find_result = heap->findElement(heap_val);
+                        if(find_result == true)
+                            cout << endl << "Kopiec zawiera element" << endl;
+                        else
+                            cout << endl << "Kopiec nie zawiera elementu" << endl;
                     }break;
                     default:
                         clearScreen();
