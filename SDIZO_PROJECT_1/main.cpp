@@ -289,7 +289,7 @@ int main(int argc, const char * argv[]) {
                         cout << endl << "Podaj wartosc elementu: ";
                         cin >> heap_val;
                         heap->addElement(heap_val);
-                        
+                        heap->printHeap("", "", 0);
                     }break;
                     case 2:
                     {
@@ -297,6 +297,7 @@ int main(int argc, const char * argv[]) {
                         //cout << endl << "Podaj wartosc elementu: ";
                         //cin >> heap_val;
                         heap->removeElement();
+                        heap->printHeap("", "", 0);
                     }break;
                     case 3:
                     {
