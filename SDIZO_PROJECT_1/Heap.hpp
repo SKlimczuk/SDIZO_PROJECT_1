@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
@@ -25,10 +26,12 @@ public:
     ~Heap();
     
     bool readFromFile(string filename);
-    void printHeap(string sp, string sn, int v);
+    void printHeap();
+    void printElement(int idx);
     
     void addElement(int val);
-    void removeElement();
+    void removeRoot();
+    void removeElement(int val);
     bool findElement(int val);
     
     int getSize();

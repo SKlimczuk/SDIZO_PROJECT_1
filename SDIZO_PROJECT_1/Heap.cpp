@@ -60,32 +60,20 @@ bool Heap::readFromFile(string filename)
     }
     return true;}
 
-void Heap::printHeap(string sp, string sn, int v)
+void Heap::printHeap()
 {
-    /*
-    string s;
-    
-    if(v < size)
+    int el_to_print_idx = 0;
+    if(size == 0)
+        cout << endl << "Kopiec jest pusty !" << endl;
+    else
     {
-        s = sp;
-        if(sn == cr) s[s.length() - 2] = ' ';
-        printHeap(s + cp, cr, 2 * v + 2);
         
-        s = s.substr(0,sp.length()-2);
         
-        cout << s << sn << heap_array[v] << endl;
-        
-        s = sp;
-        if(sn == cl) s[s.length() - 2] = ' ';
-        printHeap(s + cp, cl, 2 * v + 1);
     }
-    */
-   
-    cout << endl << "rozmiar : " << size << endl;
-    for(int i=0;i<size;i++)
-    {
-        cout << endl << i+1 << " : " << heap_array[i];
-    }
+}
+void Heap::printElement(int idx)
+{
+    cout << heap_array[idx] << " ";
 }
 
 void Heap::addElement(int val)
@@ -112,7 +100,7 @@ void Heap::addElement(int val)
     }
 }
 
-void Heap::removeElement()
+void Heap::removeRoot()
 {
     if(size == 0)
         cout << endl << "Kopiec jest pusty !" << endl;
@@ -135,6 +123,48 @@ void Heap::removeElement()
             j = 2*j + 1;
         }
         heap_array[i] = temp;
+    }
+}
+
+void Heap::removeElement(int val)
+{
+    if(size == 0)
+        cout << endl << "Kopiec jest pusty !" << endl;
+    else if(!findElement(val))
+        cout << endl << "Nie ma takiego elementu !" << endl;
+    else
+    {
+        int idx;
+        for(idx=0;idx<size;idx++)
+            if(heap_array[idx] == val)
+                break;
+        //jezeli to ostatni element
+        if(idx == size-1)
+            size--;
+        //jezeli to korzen
+        else if(idx == 0)
+            removeRoot();
+        //nie ostatni i nie korzen
+        else
+        {
+            int last_el_val = heap_array[size-1];
+            size--;
+            
+            int el_to_remove_idx = idx;
+            int child_idx = 2*el_to_remove_idx + 1;
+            
+            while(child_idx < size)
+            {
+                if(child_idx+1 < size && heap_array[child_idx+1] > heap_array[child_idx])
+                    child_idx++;
+                if(last_el_val >= heap_array[child_idx])
+                    break;
+                heap_array[el_to_remove_idx] = heap_array[child_idx];
+                el_to_remove_idx = child_idx;
+                child_idx = 2*child_idx + 1;
+            }
+            heap_array[el_to_remove_idx] = last_el_val;
+        }
     }
 }
 

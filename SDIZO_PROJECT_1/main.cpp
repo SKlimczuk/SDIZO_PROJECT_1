@@ -60,14 +60,15 @@ int main(int argc, const char * argv[]) {
                 //list->readFromFile(filename);
                 //list->printList();
                 heap->readFromFile(filename);
-                heap->printHeap("", "", 0);
+               
                 
             }break;
             case 2:
             {
-                //wyswietlanie struktur
+                //--------wyswietlanie struktur
                 //array->printArray();
-                list->printList();
+                //list->printList();
+                heap->printHeap();
             }break;
             case 3:
             {
@@ -289,15 +290,14 @@ int main(int argc, const char * argv[]) {
                         cout << endl << "Podaj wartosc elementu: ";
                         cin >> heap_val;
                         heap->addElement(heap_val);
-                        heap->printHeap("", "", 0);
+                       
                     }break;
                     case 2:
                     {
                         //usuwanie
-                        //cout << endl << "Podaj wartosc elementu: ";
-                        //cin >> heap_val;
-                        heap->removeElement();
-                        heap->printHeap("", "", 0);
+                        cout << endl << "Podaj wartosc elementu: ";
+                        cin >> heap_val;
+                        heap->removeElement(heap_val);
                     }break;
                     case 3:
                     {
