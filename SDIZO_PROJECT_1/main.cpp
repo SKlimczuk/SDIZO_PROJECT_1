@@ -68,7 +68,7 @@ int main(int argc, const char * argv[]) {
                 //--------wyswietlanie struktur
                 //array->printArray();
                 //list->printList();
-                heap->printHeap();
+                heap->printHeap("","",0);
             }break;
             case 3:
             {

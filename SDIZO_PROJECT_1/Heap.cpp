@@ -17,12 +17,7 @@ Heap::Heap()
     this->size = 0;
     this->heap_array = new int[size];
     
-    this->cr = this->cl = this->cp = "  ";
-    this->cr[0] = '218';
-    this->cr[1] = '196';
-    this->cl[0] = '192';
-    this->cl[1] = '196';
-    this->cp[0] = '179';
+    
 }
 
 Heap::~Heap()
@@ -60,15 +55,36 @@ bool Heap::readFromFile(string filename)
     }
     return true;}
 
-void Heap::printHeap()
+void Heap::printHeap(string sp, string sn, int v)
 {
     int el_to_print_idx = 0;
     if(size == 0)
         cout << endl << "Kopiec jest pusty !" << endl;
     else
     {
+        string s;
+        string cr,cl,cp;
+        cr = cl = cp = "  ";
+        cr[0] = '218 ';
+        cr[1] = '196 ';
+        cl[0] = '192 ';
+        cl[1] = '196 ';
+        cp[0] = '179 ';
         
-        
+        if(v < size)
+        {
+            s = sp;
+            if(sn == cr) s[s.length() - 2] = ' ';
+            printHeap(s + cp, cr, 2 * v + 2);
+            
+            s = s.substr(0,sp.length()-2);
+            
+            cout << s << sn << heap_array[v] << endl;
+            
+            s = sp;
+            if(sn == cl) s[s.length() - 2] = ' ';
+            printHeap(s + cp, cl, 2 * v + 1);
+        }
     }
 }
 void Heap::printElement(int idx)

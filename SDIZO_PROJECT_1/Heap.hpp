@@ -20,13 +20,13 @@ class Heap
 private:
     int size;
     int *heap_array;
-    string cr,cl,cp;
+    //string cr,cl,cp;
 public:
     Heap();
     ~Heap();
     
     bool readFromFile(string filename);
-    void printHeap();
+    void printHeap(string sp, string sn, int v);
     void printElement(int idx);
     
     void addElement(int val);
